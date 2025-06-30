@@ -110,11 +110,18 @@ cd bootstrap-vs-zombies
 # Install dependencies
 npm install
 
+# Copy environment example and add your Supabase credentials
+cp .env.example .env
+
 # Start development server
 npm run dev
 
 # Open http://localhost:5173 in your browser
 ```
+
+The application expects `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` to be
+present in a `.env` file. Copy `.env.example` to `.env` and fill in your
+Supabase project details before starting the server.
 
 ### Development Commands
 ```bash
