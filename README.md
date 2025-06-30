@@ -181,6 +181,7 @@ Each component includes comprehensive JSDoc comments explaining:
 bootstrap-vs-zombies/
 ├── frontend/          # Current React application
 ├── backend/           # Flask API server
+├── backend_py/        # FastAPI API server
 │   ├── auth/         # User authentication endpoints
 │   ├── scores/       # Leaderboard management
 │   ├── analytics/    # Learning progress tracking
@@ -201,6 +202,32 @@ bootstrap-vs-zombies/
 - `POST /api/auth/register` – create a new user
 - `POST /api/auth/login` – authenticate a user and return a JWT
 - `GET /api/auth/me` – return the authenticated user profile
+
+### FastAPI API Overview
+
+The `backend_py` directory contains an alternative implementation built with **FastAPI**.
+It exposes similar endpoints to the Flask version but uses asynchronous handlers and
+serves as a lightweight example for experimenting with FastAPI.
+
+### Starting the Backends
+
+**Flask via Docker Compose**
+
+```bash
+docker compose up --build
+```
+
+This command launches both the React frontend and the Flask API on port `5000`.
+
+**FastAPI with uvicorn**
+
+```bash
+cd backend_py
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+Visit `http://localhost:8000/docs` for the interactive API documentation.
 
 ### Planned Features
 - **User Accounts**: Persistent progress tracking
