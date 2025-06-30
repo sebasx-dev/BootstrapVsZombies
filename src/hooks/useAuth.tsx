@@ -12,7 +12,9 @@ export const useAuth = () => {
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        console.log('Auth state changed:', event, session?.user?.email);
+        if (import.meta.env.DEV) {
+          console.log('Auth state changed:', event, session?.user?.email);
+        }
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
@@ -24,7 +26,9 @@ export const useAuth = () => {
       if (error) {
         console.error('Error getting session:', error);
       }
-      console.log('Initial session check:', session?.user?.email);
+      if (import.meta.env.DEV) {
+        console.log('Initial session check:', session?.user?.email);
+      }
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
@@ -46,7 +50,9 @@ export const useAuth = () => {
         }
       });
       
-      console.log('Sign up result:', { data, error });
+      if (import.meta.env.DEV) {
+        console.log('Sign up result:', { data, error });
+      }
       return { data, error };
     } catch (error) {
       console.error('Sign up error:', error);
@@ -61,7 +67,9 @@ export const useAuth = () => {
         password
       });
       
-      console.log('Sign in result:', { data, error });
+      if (import.meta.env.DEV) {
+        console.log('Sign in result:', { data, error });
+      }
       return { data, error };
     } catch (error) {
       console.error('Sign in error:', error);
@@ -71,13 +79,17 @@ export const useAuth = () => {
 
   const signOut = async () => {
     try {
-      console.log('Signing out user:', user?.email);
+      if (import.meta.env.DEV) {
+        console.log('Signing out user:', user?.email);
+      }
       const { error } = await supabase.auth.signOut();
       
       if (error) {
         console.error('Sign out error:', error);
       } else {
-        console.log('Successfully signed out');
+        if (import.meta.env.DEV) {
+          console.log('Successfully signed out');
+        }
         // Clear local state
         setUser(null);
         setSession(null);
