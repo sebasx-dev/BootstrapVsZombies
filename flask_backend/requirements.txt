@@ -1,5 +1,0 @@
-Flask
-Flask-JWT-Extended
-Flask-Bcrypt
-Flask-SQLAlchemy
-python-dotenv
