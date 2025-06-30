@@ -124,6 +124,8 @@ VITE_SUPABASE_URL=<your-supabase-url>
 VITE_SUPABASE_ANON_KEY=<your-anon-key>
 ```
 
+For details on initializing Supabase, running migrations and generating the typed client, see [docs/supabase.md](docs/supabase.md).
+
 ### Development Commands
 ```bash
 npm run dev          # Start development server
