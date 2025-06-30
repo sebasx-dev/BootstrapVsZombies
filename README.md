@@ -196,7 +196,7 @@ bootstrap-vs-zombies/
 - `FLASK_SECRET_KEY` – session secret used by Flask
 - `JWT_SECRET_KEY` – key for signing JWT access tokens
 - `DATABASE_URL` – SQLAlchemy database connection string
-  (see [`flask_backend/.env.example`](flask_backend/.env.example))
+  (see [`backend/.env.example`](backend/.env.example))
 
 #### Endpoints
 - `POST /api/auth/register` – create a new user
