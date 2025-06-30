@@ -172,7 +172,7 @@ Each component includes comprehensive JSDoc comments explaining:
 ```
 bootstrap-vs-zombies/
 ├── frontend/          # Current React application
-├── backend/           # Express.js API server
+├── backend/           # Flask API server
 │   ├── auth/         # User authentication endpoints
 │   ├── scores/       # Leaderboard management
 │   ├── analytics/    # Learning progress tracking
@@ -180,6 +180,19 @@ bootstrap-vs-zombies/
 ├── shared/           # TypeScript interfaces
 └── database/         # PostgreSQL schema and migrations
 ```
+
+### Flask API Overview
+
+#### Environment Variables
+- `FLASK_SECRET_KEY` – session secret used by Flask
+- `JWT_SECRET_KEY` – key for signing JWT access tokens
+- `DATABASE_URL` – SQLAlchemy database connection string
+  (see [`flask_backend/.env.example`](flask_backend/.env.example))
+
+#### Endpoints
+- `POST /api/auth/register` – create a new user
+- `POST /api/auth/login` – authenticate a user and return a JWT
+- `GET /api/auth/me` – return the authenticated user profile
 
 ### Planned Features
 - **User Accounts**: Persistent progress tracking
@@ -235,7 +248,8 @@ The project includes Docker configuration for running the React frontend and Fla
 
 1. Create a new **Web Service** on Render and point it to the `backend/` directory. Render will build the image from `backend/Dockerfile`.
 2. Create a **Static Site** for the React frontend. Set the build command to `npm run build` and the publish directory to `dist`.
-3. Configure environment variables (e.g., database URLs) on each service as needed.
+3. Configure environment variables such as `FLASK_SECRET_KEY`, `JWT_SECRET_KEY`,
+   and `DATABASE_URL` on each service.
 
 ### Deploying to Heroku
 
