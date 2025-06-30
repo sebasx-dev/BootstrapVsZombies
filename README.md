@@ -240,6 +240,21 @@ We welcome contributions that enhance the educational value of the project!
 4. Test thoroughly (both educational and technical aspects)
 5. Submit a pull request with detailed description
 
+## 🧪 Testing
+
+Install the Python dependencies needed for the test suite and execute the tests
+using `pytest`:
+
+```bash
+pip install -r requirements-test.txt
+pytest
+```
+
+The tests spin up a temporary SQLite database and do not require any additional
+configuration. Environment variables such as `FLASK_SECRET_KEY`,
+`JWT_SECRET_KEY` and `DATABASE_URL` (see `backend/.env.example`) can be set to
+override the defaults if desired.
+
 ## 🚀 Deployment
 
 The project includes Docker configuration for running the React frontend and Flask backend.
