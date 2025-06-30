@@ -116,6 +116,14 @@ npm run dev
 # Open http://localhost:5173 in your browser
 ```
 
+### Environment Variables
+Create a `.env` file in the project root with your Supabase credentials:
+
+```bash
+VITE_SUPABASE_URL=<your-supabase-url>
+VITE_SUPABASE_ANON_KEY=<your-anon-key>
+```
+
 ### Development Commands
 ```bash
 npm run dev          # Start development server
