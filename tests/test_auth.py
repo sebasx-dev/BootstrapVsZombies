@@ -9,7 +9,7 @@ if not hasattr(flask.Flask, "before_first_request"):
 
     flask.Flask.before_first_request = before_first_request
 
-from flask_backend.app import app, db
+from backend.app import app, db
 
 @pytest.fixture()
 def client(tmp_path):
