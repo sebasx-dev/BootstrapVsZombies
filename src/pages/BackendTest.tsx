@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button, Form, Alert, Table } from 'react-boo
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-// Use the Flask backend instead of direct Supabase access
+// Connect to the Flask backend API
 const API_BASE_URL = 'http://localhost:5000';
 
 interface GameSession {
