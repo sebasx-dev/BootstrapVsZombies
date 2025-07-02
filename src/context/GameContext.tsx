@@ -1,9 +1,8 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 
 /**
- * Minimal representation of an authenticated user as returned
- * by the Flask API. This mirrors the `User.serialize` method
- * from the backend and replaces the Supabase user type.
+ * Representation of an authenticated user.
+ * Mirrors `User.serialize` from the Flask backend.
  */
 interface GameUser {
   id: number;
