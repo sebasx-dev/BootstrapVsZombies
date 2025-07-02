@@ -117,11 +117,13 @@ npm run dev
 ```
 
 ### Environment Variables
-Copy `.env.example` to `.env` in the project root and add your Supabase credentials:
+Copy `.env.example` to `.env` in the project root. No frontend variables are required.
+The backend uses the following variables (see [`backend/.env.example`](backend/.env.example)):
 
 ```bash
-VITE_SUPABASE_URL=<your-supabase-url>
-VITE_SUPABASE_ANON_KEY=<your-anon-key>
+FLASK_APP_KEY=<flask-secret>
+JWT_SECRET_KEY=<jwt-secret>
+DATABASE_URL=<database-url>
 ```
 
 ### Development Commands
@@ -200,13 +202,15 @@ bootstrap-vs-zombies/
 
 ### Starting the Backend
 
-**Flask via Docker Compose**
-
 ```bash
-docker compose up --build
+cd backend
+pip install -r requirements.txt
+cp .env.example .env  # customize as needed
+export FLASK_APP=src/app.py
+flask run --host 0.0.0.0 --port 5000
 ```
 
-This command launches both the React frontend and the Flask API on port `5000`.
+The API will start on <http://localhost:5000> using the configuration from `.env`.
 
 ### Planned Features
 - **User Accounts**: Persistent progress tracking
