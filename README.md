@@ -117,7 +117,7 @@ npm run dev
 ```
 
 ### Environment Variables
-Create a `.env` file in the project root with your Supabase credentials:
+Copy `.env.example` to `.env` in the project root and add your Supabase credentials:
 
 ```bash
 VITE_SUPABASE_URL=<your-supabase-url>
@@ -180,12 +180,7 @@ Each component includes comprehensive JSDoc comments explaining:
 ```
 bootstrap-vs-zombies/
 ├── frontend/          # Current React application
-├── backend/           # Flask API server
-├── backend_py/        # FastAPI API server
-│   ├── auth/         # User authentication endpoints
-│   ├── scores/       # Leaderboard management
-│   ├── analytics/    # Learning progress tracking
-│   └── game/         # Game state persistence
+├── backend/           # Flask API server (flask-rest-hello template)
 ├── shared/           # TypeScript interfaces
 └── database/         # PostgreSQL schema and migrations
 ```
@@ -193,7 +188,7 @@ bootstrap-vs-zombies/
 ### Flask API Overview
 
 #### Environment Variables
-- `FLASK_SECRET_KEY` – session secret used by Flask
+- `FLASK_APP_KEY` – secret key used by Flask
 - `JWT_SECRET_KEY` – key for signing JWT access tokens
 - `DATABASE_URL` – SQLAlchemy database connection string
   (see [`backend/.env.example`](backend/.env.example))
@@ -203,13 +198,7 @@ bootstrap-vs-zombies/
 - `POST /api/auth/login` – authenticate a user and return a JWT
 - `GET /api/auth/me` – return the authenticated user profile
 
-### FastAPI API Overview
-
-The `backend_py` directory contains an alternative implementation built with **FastAPI**.
-It exposes similar endpoints to the Flask version but uses asynchronous handlers and
-serves as a lightweight example for experimenting with FastAPI.
-
-### Starting the Backends
+### Starting the Backend
 
 **Flask via Docker Compose**
 
@@ -218,16 +207,6 @@ docker compose up --build
 ```
 
 This command launches both the React frontend and the Flask API on port `5000`.
-
-**FastAPI with uvicorn**
-
-```bash
-cd backend_py
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-```
-
-Visit `http://localhost:8000/docs` for the interactive API documentation.
 
 ### Planned Features
 - **User Accounts**: Persistent progress tracking
@@ -278,7 +257,7 @@ pytest
 ```
 
 The tests spin up a temporary SQLite database and do not require any additional
-configuration. Environment variables such as `FLASK_SECRET_KEY`,
+configuration. Environment variables such as `FLASK_APP_KEY`,
 `JWT_SECRET_KEY` and `DATABASE_URL` (see `backend/.env.example`) can be set to
 override the defaults if desired.
 
@@ -298,7 +277,7 @@ The project includes Docker configuration for running the React frontend and Fla
 
 1. Create a new **Web Service** on Render and point it to the `backend/` directory. Render will build the image from `backend/Dockerfile`.
 2. Create a **Static Site** for the React frontend. Set the build command to `npm run build` and the publish directory to `dist`.
-3. Configure environment variables such as `FLASK_SECRET_KEY`, `JWT_SECRET_KEY`,
+3. Configure environment variables such as `FLASK_APP_KEY`, `JWT_SECRET_KEY`,
    and `DATABASE_URL` on each service.
 
 ### Deploying to Heroku
