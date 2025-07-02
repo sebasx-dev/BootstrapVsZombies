@@ -45,9 +45,7 @@ const Navigation: React.FC = () => {
             {user ? (
               <>
                 <Nav.Item className="d-flex align-items-center me-3">
-                  <span className="text-light">
-                    Welcome, {user.user_metadata?.display_name || user.email}!
-                  </span>
+                  <span className="text-light">Welcome, {user.name}!</span>
                 </Nav.Item>
                 <Button 
                   variant="outline-light" 
