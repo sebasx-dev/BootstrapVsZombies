@@ -27,3 +27,4 @@ __pycache__/
 
 # Ignore package-lock.json
 package-lock.json
+.env

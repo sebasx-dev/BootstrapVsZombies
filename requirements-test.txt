@@ -1,11 +1,12 @@
 pytest
-fastapi
-uvicorn
-sqlalchemy
-pydantic
 Flask
 Flask-JWT-Extended
 Flask-Bcrypt
 Flask-SQLAlchemy
+Flask-Migrate
+Flask-Cors
+Flask-Admin
+wtforms
 python-dotenv
-httpx
+sqlalchemy
+httpx<0.28
