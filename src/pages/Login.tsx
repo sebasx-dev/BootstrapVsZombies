@@ -75,9 +75,7 @@ const Login: React.FC = () => {
         const { data, error } = await signUp(email, password, name);
         if (error) throw error;
         
-        if (data.user && !data.user.email_confirmed_at) {
-          setSuccess('Please check your email and click the confirmation link to complete registration.');
-        } else if (data.user) {
+        if (data.user) {
           setSuccess('Account created successfully! You can now sign in.');
           setIsRegister(false);
           setEmail('');
@@ -104,8 +102,6 @@ const Login: React.FC = () => {
         errorMessage = 'Invalid email or password. Please try again.';
       } else if (error.message?.includes('User already registered')) {
         errorMessage = 'An account with this email already exists. Please sign in instead.';
-      } else if (error.message?.includes('Email not confirmed')) {
-        errorMessage = 'Please check your email and click the confirmation link before signing in.';
       } else if (error.message) {
         errorMessage = error.message;
       }
@@ -240,8 +236,7 @@ const Login: React.FC = () => {
                 {isRegister && (
                   <div className="mt-3">
                     <small className="text-muted">
-                      <strong>Note:</strong> You'll receive a confirmation email after registration. 
-                      Click the link in the email to activate your account.
+                      <strong>Welcome!</strong> After joining, you can sign in to start playing.
                     </small>
                   </div>
                 )}
