@@ -32,12 +32,7 @@ const Navigation: React.FC = () => {
             )}
             <Link to="/leaderboard" className="nav-link">Leaderboard</Link>
             {user && (
-              <>
-                <Link to="/profile" className="nav-link">Profile</Link>
-                {user.email === 'sebasmiramontes@gmail.com' && (
-                  <Link to="/backend-test" className="nav-link">Backend Test</Link>
-                )}
-              </>
+              <Link to="/profile" className="nav-link">Profile</Link>
             )}
           </Nav>
           

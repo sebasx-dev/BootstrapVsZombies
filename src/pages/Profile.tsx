@@ -242,7 +242,7 @@ const Profile: React.FC = () => {
                 ) : (
                   <div className="text-center">
                     <p>No game statistics yet!</p>
-                    <p>Play some games or use the <strong>Backend Test</strong> page to add test scores.</p>
+                    <p>Play some games to generate statistics.</p>
                   </div>
                 )}
               </Card.Body>
@@ -259,9 +259,6 @@ const Profile: React.FC = () => {
                   </Button>
                   <Button variant="success" onClick={() => navigate('/leaderboard')}>
                     View Leaderboard
-                  </Button>
-                  <Button variant="info" onClick={() => navigate('/backend-test')}>
-                    Backend Test
                   </Button>
                 </div>
               </Card.Body>

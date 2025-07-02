@@ -9,7 +9,6 @@ import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
-import BackendTest from "./pages/BackendTest";
 import NotFound from "./pages/NotFound";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useRef, useState, useEffect } from 'react';
@@ -28,7 +27,6 @@ const App = () => (
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/backend-test" element={<BackendTest />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
