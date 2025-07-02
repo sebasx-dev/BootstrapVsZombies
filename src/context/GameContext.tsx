@@ -1,12 +1,15 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { User } from '@supabase/supabase-js';
 
 /**
- * Represents a user in the Bootstrap vs Zombies game
- * Now using Supabase User type for proper authentication
+ * Minimal representation of an authenticated user as returned
+ * by the Flask API. This mirrors the `User.serialize` method
+ * from the backend and replaces the Supabase user type.
  */
-interface GameUser extends User {
-  // Additional game-specific user properties can be added here
+interface GameUser {
+  id: number;
+  email: string;
+  name: string;
+  created_at: string;
 }
 
 /**
@@ -34,7 +37,8 @@ interface Pellet {
 
 /**
  * Main game state interface
- * Updated to use Supabase User type
+ * Updated to use the custom user interface returned by the
+ * Flask authentication API
  */
 interface GameState {
   // Game progression tracking
@@ -50,7 +54,7 @@ interface GameState {
   zombies: Zombie[];       // All active zombies on the board
   pellets: Pellet[];       // All active projectiles
   
-  // User authentication (now using Supabase)
+  // User authentication (using Flask JWT)
   isAuthenticated: boolean;
   user: GameUser | null;
 }

@@ -11,12 +11,13 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import Navigation from "@/components/Navigation";
-import { supabase } from "@/integrations/supabase/client";
-import type { Database } from "@/integrations/supabase/types";
 
-// Grab the return‐row type from your auto-generated types:
-type LeaderboardRow =
-  Database["public"]["Functions"]["get_leaderboard_data"]["Returns"][number];
+interface LeaderboardRow {
+  display_name: string | null;
+  high_score: number;
+  total_games: number;
+  levels_completed: number;
+}
 
 const Leaderboard: React.FC = () => {
   const [rows, setRows] = useState<LeaderboardRow[]>([]);
@@ -25,18 +26,19 @@ const Leaderboard: React.FC = () => {
   useEffect(() => {
     async function fetchLeaderboard() {
       setLoading(true);
-
-      // no generics here, our `types.ts` knows get_leaderboard_data → LeaderboardRow[]
-      const { data, error } = await supabase
-        .rpc("get_leaderboard_data", {} as Record<string, never>);
-
-      if (error) {
-        console.error("RPC error:", error);
-      } else {
-        setRows(data ?? []);
+      try {
+        const res = await fetch('/api/leaderboard');
+        const data = await res.json();
+        if (res.ok) {
+          setRows(data as LeaderboardRow[]);
+        } else {
+          console.error(data.error || 'Failed to load leaderboard');
+        }
+      } catch (err) {
+        console.error('Leaderboard fetch error:', err);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     }
 
     fetchLeaderboard();

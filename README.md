@@ -117,12 +117,7 @@ npm run dev
 ```
 
 ### Environment Variables
-Copy `.env.example` to `.env` in the project root and add your Supabase credentials:
-
-```bash
-VITE_SUPABASE_URL=<your-supabase-url>
-VITE_SUPABASE_ANON_KEY=<your-anon-key>
-```
+Create a `.env` file in the project root and add any required configuration values.
 
 ### Development Commands
 ```bash
